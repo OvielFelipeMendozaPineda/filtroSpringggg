@@ -1,5 +1,6 @@
 package filtrospring.filtro.Medicine.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,10 +18,29 @@ public class MedicineService {
     private MedicineRepository medicineRepository;
 
     @Autowired
-    private LabatoryService labatoryService; 
+    private LabatoryService labatoryService;
 
     public List<MedicineDTO> getAllMedicines() {
-        List<Medicine> medicineRepository.findAll();
+        List<Medicine> medicines = medicineRepository.findAll();
+
+        List<MedicineDTO> medicineDTOs = new ArrayList<>();
+
+        medicines.forEach(medicine -> {
+            MedicineDTO medicineDTO = new MedicineDTO();
+            medicineDTO.setId(medicine.getId());
+            medicineDTO.setProceedings(medicine.getProceedings());
+            medicineDTO.setNameMedicine(medicine.getNameMedicine());
+            medicineDTO.setHealthRegister(medicine.getHealthRegister());
+            medicineDTO.setDescription(medicine.getDescription());
+            medicineDTO.setDescriptionShort(medicine.getDescriptionShort());
+            medicineDTO.setCodeModeAdmin(medicine.getCodeModeAdmin());
+            medicineDTO.setCodeAp(medicine.getCodeAp());
+            medicineDTO.setCodeUm(medicine.getCodeUm());
+            medicineDTO.setNameRol(medicine.getNameRol());
+            medicineDTO.setLaboratory(labatoryService.getLabatory(medicine.getCodeLab().getId()).getLabatoryName());
+            medicineDTOs.add(medicineDTO);
+        });
+        return medicineDTOs;
     }
 
     public MedicineDTO getMedicine(Long id) {

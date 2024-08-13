@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,7 +29,7 @@ public class MedicineController {
     public MedicineService  medicineService;
     
     @GetMapping("/getAll")
-    public List<Medicine> getAllMedicines() {
+    public List<MedicineDTO> getAllMedicines() {
         return medicineService.getAllMedicines();
     }
     @GetMapping("/getMedicine")
@@ -41,9 +42,10 @@ public class MedicineController {
         return medicineService.saveMedicine(medicine);
     }
 
-    @GetMapping("/delete/")
-    public ResponseEntity<Medicine> deleteMedicine(@RequestParam Long id) {
-        return ResponseEntity.ok().build();
+    @DeleteMapping("/deleteMedicine")
+    public String deleteMedicine(@RequestParam Long id) {
+        medicineService.deleteMedicine(id);
+        return "eliminado";
     }
     
     
