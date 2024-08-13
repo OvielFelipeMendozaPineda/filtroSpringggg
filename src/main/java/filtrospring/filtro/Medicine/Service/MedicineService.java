@@ -19,8 +19,8 @@ public class MedicineService {
     @Autowired
     private LabatoryService labatoryService; 
 
-    public List<Medicine> getAllMedicines() {
-        return medicineRepository.findAll();
+    public List<MedicineDTO> getAllMedicines() {
+        List<Medicine> medicineRepository.findAll();
     }
 
     public MedicineDTO getMedicine(Long id) {
