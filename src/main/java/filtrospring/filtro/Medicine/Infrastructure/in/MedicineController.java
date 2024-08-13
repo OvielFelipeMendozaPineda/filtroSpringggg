@@ -1,18 +1,18 @@
 package filtrospring.filtro.Medicine.Infrastructure.in;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import filtrospring.filtro.Medicine.Domain.Medicine;
+import filtrospring.filtro.Medicine.Domain.MedicineDTO;
 import filtrospring.filtro.Medicine.Service.MedicineService;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -32,7 +32,7 @@ public class MedicineController {
         return medicineService.getAllMedicines();
     }
     @GetMapping("/getMedicine")
-    public Optional<Medicine> getMedicine(@PathVariable Long id) {
+    public MedicineDTO getMedicine(@RequestParam Long id) {
         return medicineService.getMedicine(id);
     }
     
@@ -41,8 +41,8 @@ public class MedicineController {
         return medicineService.saveMedicine(medicine);
     }
 
-    @GetMapping("/delete")
-    public ResponseEntity<Medicine> deleteMedicine(@PathVariable Long id) {
+    @GetMapping("/delete/")
+    public ResponseEntity<Medicine> deleteMedicine(@RequestParam Long id) {
         return ResponseEntity.ok().build();
     }
     

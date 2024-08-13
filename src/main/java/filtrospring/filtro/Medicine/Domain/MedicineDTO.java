@@ -1,20 +1,27 @@
 package filtrospring.filtro.Medicine.Domain;
 
+import filtrospring.filtro.ModeAdministrator.Domain.ModeAdministrator;
+import filtrospring.filtro.UnitMesurement.Domain.UnitMesurement;
+import filtrospring.filtro.activePrinciple.Domain.ActivePrinciple;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class MedicineDTO {
-    
+
+    private Long id;
+    private String proceedings ;
+    private String nameMedicine ;
+    private String healthRegister ;
+    private String description ;
+    private String descriptionShort ;
+    private ModeAdministrator codeModeAdmin;
+    private ActivePrinciple codeAp ;
+    private UnitMesurement codeUm ;
+    private String nameRol ;
+    private String laboratory ;
 }
 
-
-/*
-{
-    "description" : "Ganancia de peso con baja dieta es la solucion",
-    "description_short" : "Aumentador de peso",
-    "health_register": "health_register",
-    "name_medicine" : "Mass gainer",
-    "name_rol": "admin",
-    "proceedings": "procedencia conocida",
-    "code_ap_id" : 1, 
-    "code_lab_id" : 1,
-    "code_mode_admin_id" : 1,
-    "code_um_id" : 1
-} */
