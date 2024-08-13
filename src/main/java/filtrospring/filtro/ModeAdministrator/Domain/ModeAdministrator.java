@@ -1,8 +1,5 @@
 package filtrospring.filtro.ModeAdministrator.Domain;
 
-import java.util.List;
-
-import filtrospring.filtro.Medicine.Domain.Medicine;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,5 +19,4 @@ public class ModeAdministrator {
     private Long id;
     private String descriptionMode;
     
-    private List<Medicine> medicines;
 }
